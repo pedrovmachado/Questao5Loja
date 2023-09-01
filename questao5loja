@@ -1,0 +1,36 @@
+
+    Scanner input = new Scanner(System.in);
+    char continuar;
+
+        do {
+            System.out.print("Digite o nome do vendedor: ");
+            String nomeVendedor = input.nextLine();
+
+            System.out.print("Quantos produtos foram vendidos por " + nomeVendedor + "? ");
+            int quantidadeProdutos = input.nextInt();
+
+            double totalVendas = 0.0;
+
+            for (int i = 1; i <= quantidadeProdutos; i++) {
+                System.out.print("Digite o preço do produto " + i + ": R$ ");
+                double precoProduto = input.nextDouble();
+
+                System.out.print("Digite a quantidade vendida do produto " + i + ": ");
+                int quantidadeVendida = input.nextInt();
+
+                totalVendas += (precoProduto * quantidadeVendida);
+            }
+
+            double salario = totalVendas * 0.30; // 30% de comissão sobre o total de vendas
+            System.out.printf("Relatório para " + nomeVendedor + ":\n");
+            System.out.printf("Total de vendas: R$ %.2f\n", totalVendas);
+            System.out.printf("Salário: R$ %.2f\n", salario);
+
+            System.out.print("Deseja digitar os dados de mais um vendedor? (s/N): ");
+            continuar = input.next().charAt(0);
+            input.nextLine(); // Limpar o buffer do teclado
+
+        } while (continuar == 's' || continuar == 'S');
+
+        System.out.println("Fim do programa.");
+        input.close();
